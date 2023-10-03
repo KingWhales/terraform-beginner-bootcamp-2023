@@ -206,3 +206,15 @@ Provide the following code (replace your token in the file):
   }
 }
 We have automated this workaround with the following bash script bin/generate_tfrc_credentials
+
+We can check if our AWS credentials is configured correctly by running the following command:
+```sh
+aws sts get-caller-identity
+```
+
+If it is successful you should see a json payload return that looks like this:
+```json
+"UserId": "AIDAT4Eer6FW72RJ7ZV3GN",
+"Account": "26120968511",
+"Arn": "arn:aws:iam::26120968511:user/terraform-bootcamp"
+```
