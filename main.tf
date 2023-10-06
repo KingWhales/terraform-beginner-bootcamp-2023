@@ -11,6 +11,16 @@ terraform {
   }
 }
 
+terraform {
+  cloud {
+    organization = "KingWhales"
+
+    workspaces {
+      name = "example-workspace"
+    }
+  }
+}
+
 provider "aws" {
   # Configuration options
 }
