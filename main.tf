@@ -16,7 +16,7 @@ terraform {
     organization = "KingWhales"
 
     workspaces {
-      name = "example-workspace"
+      name = "terra-house-1"
     }
   }
 }
