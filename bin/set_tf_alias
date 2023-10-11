@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Define the alias
+echo "alias tf='terraform'" >> ~/.bash_profile
+
+# Apply the changes
+source ~/.bash_profile
+
+echo "Alias 'tf' for 'terraform' added successfully."
