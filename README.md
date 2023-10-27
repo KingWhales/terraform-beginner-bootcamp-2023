@@ -4,6 +4,7 @@
 - [Semantic Versioning](#semantic-versioning)
 - [Install the Terraform CLI](#Install-the-terraform-cli)s
   - [Considerations with the Terraform CLI change](#Considerations-with-the-Terraform-CLI-changes)
+  - [Refactoring into Bash Scripts](Refactoring-into-Bash-scripts)
 
 
 ## Semantic Versioning
@@ -21,7 +22,7 @@ PATCH version when you make backward compatible bug fixes.
 Considerations with the Terraform CLI changes
 The Terraform CLI installation instructions have changed due to gpg keyring changes. So we needed refer to the latest install CLI instructions via Terraform Documentation and change the scripting for install.
 
-Install Terraform CLI
+## Install Terraform CLI
 
 Considerations for Linux Distribution
 This project is built against Ubunutu. Please consider checking your Linux Distrubtion and change accordingly to distrubtion needs.
@@ -29,7 +30,7 @@ This project is built against Ubunutu. Please consider checking your Linux Distr
 [How To Check OS Version in Linux](https://www.cyberciti.biz/faq/how-to-check-os-version-in-linux-command-line/)
 
 Example of checking OS Version:
-
+```
 $ cat /etc/os-release
 
 PRETTY_NAME="Ubuntu 22.04.3 LTS"
@@ -44,7 +45,8 @@ SUPPORT_URL="https://help.ubuntu.com/"
 BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
 PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
 UBUNTU_CODENAME=jammy
-Refactoring into Bash Scripts
+```
+## Refactoring into Bash Scripts
 While fixing the Terraform CLI gpg depreciation issues we notice that bash scripts steps were a considerable amount more code. So we decided to create a bash script to install the Terraform CLI.
 
 This bash script is located here: ./bin/install_terraform_cli
