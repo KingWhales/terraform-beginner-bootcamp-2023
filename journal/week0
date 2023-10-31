@@ -57,7 +57,7 @@ This will allow better portablity for other projects that need to install Terraf
 Shebang Considerations
 A Shebang (prounced Sha-bang) tells the bash script what program that will interpet the script. eg. #!/bin/bash
 
-ChatGPT recommended this format for bash: #!/usr/bin/env bash
+ChatGPT recommended this format for bash: `#!/usr/bin/env bash`
 
 for portability for different OS distributions
 will search the user's PATH for the bash executable
