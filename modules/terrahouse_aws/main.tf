@@ -7,21 +7,15 @@ terraform {
   }
 }
 
-terraform {
-  cloud {
-    organization = "KingWhales"
-
-    workspaces {
-      name = "terra-house-1"
-    }
-  }
-}
-
 provider "aws" {
   # Configuration options
 }
 
+resource "aws_s3_bucket" "website_bucket" {
+  bucket = var.bucket_name
 
-provider "random" {
-  # Configuration options
+
+  tags = {
+    UserUuid  = "My bucket"
+  }
 }
