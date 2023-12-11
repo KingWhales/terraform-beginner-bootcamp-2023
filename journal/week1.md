@@ -98,3 +98,11 @@ module "terrahouse_aws" {
 LLMs such as chatGPT may not be trained on the latest document or information about Terraform.
 
 It may likely produce older examples that could be deprecated. Often affecting providers.
+
+## Working with Files in Terraform
+
+### Path Variable
+In Terraform there is special variable called 'path' that allows us to reference local paths:
+- path.module = get the path for the current module
+- path.root = get the path for the root module
+[Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
