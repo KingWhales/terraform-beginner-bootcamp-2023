@@ -124,3 +124,25 @@ resource "aws_s3_object" "error_html" {
   source = "${path.root}./public/error.html"
   etag = filemd5(var.error_html_filepath)
 }
+
+### Fixing Tags
+
+[How to Delete Local and Remote Tags on Git](https://devconnected.com/how-to-delete-local-and-remote-tags-on-git/)
+
+Local delete a tag
+```
+git tag -d <tag_name>
+```
+
+Remotely delete tag
+```
+git push --delete origin tagname
+```
+
+Checkout the commit that you want to retag. Grab the sha from your Github history.
+```
+git checkout <SHA>
+git tag M.M.P
+git push --tags
+git checkout main
+```
