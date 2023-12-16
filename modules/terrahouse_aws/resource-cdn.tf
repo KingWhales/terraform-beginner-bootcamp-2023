@@ -1,3 +1,14 @@
+resource "aws_cloudfront_origin_access_control" "example" {
+  name                              = "OAC ${var.bucket_name}"
+  description                       = "Origin Access Control for Static Website Hosting ${var.bucket_name}"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
+
+local = {
+  s3_origin_id= "mys3Origin"
+}
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
