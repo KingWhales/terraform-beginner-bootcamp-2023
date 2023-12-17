@@ -2,8 +2,7 @@
 resource "aws_s3_bucket" "website_bucket" {
   # Bucket Naming Rules
   #https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html?icmpid=docs_amazons3_console
-  # we want to assign a random bucket name
-  #bucket = var.bucket_name
+  bucket = var.bucket_name
 
   tags = {
     UserUuid = var.user_uuid
@@ -26,39 +25,20 @@ resource "aws_s3_bucket_website_configuration" "website_configuration" {
 resource "aws_s3_object" "index_html" {
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "index.html"
-  source = "${var.public_path}/index.html"
+  source = var.index_html_filepath
   content_type = "text/html"
 
-  etag = filemd5("${var.public_path}/index.html")
-  lifecycle {
-    replace_triggered_by = [terraform_data.content_version.output]
-    ignore_changes = [etag]
-  }
-}
-
-resource "aws_s3_object" "upload_assets" {
-  for_each = fileset("${var.public_path}/assets","*.{jpg,png,gif}")
-  bucket = aws_s3_bucket.website_bucket.bucket
-  key    = "assets/${each.key}"
-  source = "${var.public_path}/assets/${each.key}"
-  etag = filemd5("${var.public_path}/assets/${each.key}")
-  lifecycle {
-    replace_triggered_by = [terraform_data.content_version.output]
-    ignore_changes = [etag]
-  }
+  etag = filemd5(var.index_html_filepath)
 }
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
 resource "aws_s3_object" "error_html" {
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "error.html"
-  source = "${var.public_path}/error.html"
+  source = var.error_html_filepath
   content_type = "text/html"
 
-  etag = filemd5("${var.public_path}/error.html")
-  #lifecycle {
-  #  ignore_changes = [etag]
-  #}
+  etag = filemd5(var.error_html_filepath)
 }
 
 resource "aws_s3_bucket_policy" "bucket_policy" {
@@ -82,9 +62,4 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
       }
     }
   })
-}
-
-
-resource "terraform_data" "content_version" {
-  input = var.content_version
 }
