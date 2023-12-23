@@ -22,13 +22,13 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   comment             = "Static website hosting for: $(var.bucket_name)"
   default_root_object = "index.html"
 
-  logging_config {
-    include_cookies = false
-    bucket          = "mylogs.s3.amazonaws.com"
-    prefix          = "myprefix"
-  }
+  #logging_config {
+  #  include_cookies = false
+  #  bucket          = "mylogs.s3.amazonaws.com"
+  #  prefix          = "myprefix"
+  #}
 
-  aliases = ["mysite.example.com", "yoursite.example.com"]
+  #aliases = ["mysite.example.com", "yoursite.example.com"]
 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
@@ -99,7 +99,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   restrictions {
     geo_restriction {
       restriction_type = "whitelist"
-      locations        = ["US", "CA", "GB", "DE"]
+      locations        = ["US", "CA", "GB", "DE", "NG"]
     }
   }
 
