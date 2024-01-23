@@ -2,4 +2,4 @@ user_uuid="a72d63dd-883e-408a-8c11-0db873a09f38"
 bucket_name="cruddur-alb-access-log"
 index_html_filepath="/workspace/terraform-beginner-bootcamp-2023/public/index.html"
 error_html_filepath="/workspace/terraform-beginner-bootcamp-2023/public/error.html"
-content_version=4
+content_version=3
