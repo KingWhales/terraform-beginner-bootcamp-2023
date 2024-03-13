@@ -1,5 +1,7 @@
 tasks: 
   - name: terraform
+    env:
+        TF_LOG: DEBUG
     before: |
       cd $PROJECT_ROOT
       source ./bin/install_terraform_cli
@@ -30,3 +32,4 @@ vscode:
     - amazonwebservices.aws-toolkit-vscode
     - hashicorp.terraform
     - mhutchie.git-graph
+    - phil294.git-log--graph
