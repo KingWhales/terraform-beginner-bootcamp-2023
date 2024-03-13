@@ -32,4 +32,8 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+<<<<<<< HEAD
 #terraform-provider-terratowns/terraform-provider-terratown
+=======
+terraform-provider-terratowns/terraform-provider-terratown
+>>>>>>> main
